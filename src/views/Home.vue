@@ -65,7 +65,7 @@ export default {
     //HelloWorld
   },
   methods: {
-    
+
   }
 }
 
@@ -136,8 +136,8 @@ footer{
 
 #submit_button{
   width: auto;
+  padding: 3vw;
   margin-bottom: 5%;
-
 }
 
 #fimage{
