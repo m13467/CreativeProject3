@@ -5,6 +5,12 @@
       <router-link to="/about">About</router-link>
     </div>
     <router-view/>
+    <footer>
+      <a href='https://github.com/cathepsin/creativeproject2.git'>
+        <img id='fimage' src='/images/git.png' alt='github' />
+        <p>MacKenzie Fisher, Nate McMurray</p>
+      </a>
+    </footer>
   </div>
 </template>
 
