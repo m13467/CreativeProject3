@@ -63,6 +63,9 @@ export default {
   name: 'Home',
   components: {
     //HelloWorld
+  },
+  methods: {
+    
   }
 }
 
@@ -112,7 +115,7 @@ footer{
 #submit_button{
   width: auto;
   margin: auto;
-  background-color: #EFEFEF;
+
 }
 /*Everything that isnt a phone*/
 /*@media only screen and (min-width: 500px){*/

@@ -4,6 +4,14 @@ import router from './router'
 
 Vue.config.productionTip = false
 
+// let app = {
+//   el: '#app',
+//   data: {
+//     sign:
+//     day:
+//   },
+// }
+
 new Vue({
   router,
   render: h => h(App)
