@@ -69,7 +69,7 @@ export default {
 </script>
 
 <style>
-body{
+*{
   background-image: url("/images/const..jpg");
   color: #EFEFEF;
 }
