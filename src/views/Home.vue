@@ -72,7 +72,7 @@ export default {
 </script>
 
 <style>
-*{
+body{
   background-image: url("/images/const..jpg");
   color: #EFEFEF;
 }
@@ -83,6 +83,7 @@ h1 {
   font-family: Garamond;
   border: #5a3e64;
   border-style: double;
+  color: #EFEFEF;
 }
 
 
@@ -92,6 +93,7 @@ h2 {
 
 #submit_form{
   margin: auto;
+  color: #EFEFEF;
 }
 
 #intr{
@@ -138,6 +140,7 @@ footer{
   width: auto;
   padding: 3vw;
   margin-bottom: 5%;
+  font-size: 2vw;
 }
 
 #fimage{
