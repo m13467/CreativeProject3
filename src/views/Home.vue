@@ -7,29 +7,29 @@
       <div>
       <form id='sign_choice'>
         <h2>Select your sign</h2>
-        <input type='radio' id='Aries' name='sign' value='aries'>
+        <input type='radio' id='Aries' name='sign' value='aries' v-model="selectedSign" @change="changeDay">
         <label for='Aries'>Aries</label><br>
-        <input type='radio' id='Taurus' name='sign' value='taurus'>
+        <input type='radio' id='Taurus' name='sign' value='taurus' v-model="selectedSign" @change="changeDay">
         <label for='Taurus'>Taurus</label><br>
-        <input type='radio' id='Gemini' name='sign' value='gemini'>
+        <input type='radio' id='Gemini' name='sign' value='gemini' v-model="selectedSign" @change="changeSign">
         <label for='Gemini'>Gemini</label><br>
-        <input type='radio' id='Cancer' name='sign' value='cancer'>
+        <input type='radio' id='Cancer' name='sign' value='cancer' v-model="selectedSign" @change="changeSign">
         <label for='Cancer'>Cancer</label><br>
-        <input type='radio' id='Leo' name='sign' value='leo'>
+        <input type='radio' id='Leo' name='sign' value='leo' v-model="selectedSign" @change="changeSign">
         <label for='Leo'>Leo</label><br>
-        <input type='radio' id='Virgo' name='sign' value='virgo'>
+        <input type='radio' id='Virgo' name='sign' value='virgo' v-model="selectedSign" @change="changeSign">
         <label for='Virgo'>Virgo</label><br>
-        <input type='radio' id='Libra' name='sign' value='libra'>
+        <input type='radio' id='Libra' name='sign' value='libra' v-model="selectedSign" @change="changeSign">
         <label for='Libra'>Libra</label><br>
-        <input type='radio' id='Scorpio' name='sign' value='scorpio'>
+        <input type='radio' id='Scorpio' name='sign' value='scorpio' v-model="selectedSign" @change="changeSign">
         <label for='Scorpio'>Scorpio</label><br>
-        <input type='radio' id='Sagittarius' name='sign' value='sagittarius'>
+        <input type='radio' id='Sagittarius' name='sign' value='sagittarius' v-model="selectedSign" @change="changeSign">
         <label for='Sagittarius'>Sagittarius</label><br>
-        <input type='radio' id='Capricorn' name='sign' value='capricorn'>
+        <input type='radio' id='Capricorn' name='sign' value='capricorn' v-model="selectedSign" @change="changeSign">
         <label for='Capricorn'>Capricorn</label><br>
-        <input type='radio' id='Aquarius' name='sign' value='aquarius'>
+        <input type='radio' id='Aquarius' name='sign' value='aquarius' v-model="selectedSign" @change="changeSign">
         <label for='Aquarius'>Aquarius</label><br>
-        <input type='radio' id='Pisces' name='sign' value='pisces'>
+        <input type='radio' id='Pisces' name='sign' value='pisces' v-model="selectedSign" @change="changeSign">
         <label for='Pisces'>Pisces</label><br>
       </form>
     </div>
@@ -37,16 +37,16 @@
         <div>
         <form id='day_choice'>
         <h2>Select the day</h2>
-        <input type='radio' id='Yesterday' name='day' value='yesterday'>
+        <input type='radio' id='Yesterday' name='day' value='yesterday' v-model="selected" @change="changeDay">
         <label for='Yesterday'>Yesterday</label><br>
-        <input type='radio' id='Today' name='day' value='today'>
+        <input type='radio' id='Today' name='day' value='today' v-model="selected" @change="changeDay">
         <label for='Today'>Today</label><br>
-        <input type='radio' id='Tomorrow' name='day' value='tomorrow'>
+        <input type='radio' id='Tomorrow' name='day' value='tomorrow' v-model="selected" @change="changeDay">
         <label for='Tomorrow'>Tomorrow</label><br><br>
       </form>
     </div>
     </div>
-    <input id="submit_button" type="submit" value="Submit">
+    <router-link to="/submit"><input id="submit_button" type="submit" value="Submit" v-on:click="horoscope()"></router-link>
       <div id="signResults">
       </div>
     </div>
@@ -64,10 +64,36 @@ export default {
   components: {
     //HelloWorld
   },
+  props: ["value"],
+  data() {
+    return {
+      selected: this.value,
+      selectedSign: this.value
+    }
+  },
+  model: {
+    prop: 'value',
+    event: 'change'
+  },
   methods: {
-
+    changeDay() {
+      this.$root.$data.day = this.selected
+    },
+    changeSign() {
+      this.$root.$data.sign = this.selectedSign
+    },
+    async horoscope() {
+      try {
+        let url = 'https://aztro.sameerkumar.website/?sign='+this.$root.$data.sign+'&day='+this.$root.$data.day;
+        await this.$http.post(url).then((response)=>
+          this.$root.$data.current = response.data
+        )
+        } catch (error) {
+          console.log(error);
+        }
+      },
+    },
   }
-}
 
 </script>
 
@@ -141,6 +167,8 @@ footer{
   padding: 3vw;
   margin-bottom: 5%;
   font-size: 2vw;
+  color: #000718;
+  background-color: #FFF8E7;
 }
 
 #fimage{
