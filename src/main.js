@@ -4,7 +4,6 @@ import router from './router'
 
 Vue.config.productionTip = false
 
-import axios from 'axios';
 import mock from './mock-data.js'
 Vue.prototype.$http = axios;
 
