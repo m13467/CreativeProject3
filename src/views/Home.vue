@@ -7,9 +7,9 @@
       <div>
       <form id='sign_choice'>
         <h2>Select your sign</h2>
-        <input type='radio' id='Aries' name='sign' value='aries' v-model="selectedSign" @change="changeDay">
+        <input type='radio' id='Aries' name='sign' value='aries' v-model="selectedSign" @change="changeSign">
         <label for='Aries'>Aries</label><br>
-        <input type='radio' id='Taurus' name='sign' value='taurus' v-model="selectedSign" @change="changeDay">
+        <input type='radio' id='Taurus' name='sign' value='taurus' v-model="selectedSign" @change="changeSign">
         <label for='Taurus'>Taurus</label><br>
         <input type='radio' id='Gemini' name='sign' value='gemini' v-model="selectedSign" @change="changeSign">
         <label for='Gemini'>Gemini</label><br>
@@ -82,15 +82,16 @@ export default {
     changeSign() {
       this.$root.$data.sign = this.selectedSign
     },
-    async horoscope() {
-      try {
-        let url = 'https://aztro.sameerkumar.website/?sign='+this.$root.$data.sign+'&day='+this.$root.$data.day;
-        await this.$http.post(url).then((response)=>
-          this.$root.$data.current = response.data
-        )
-        } catch (error) {
-          console.log(error);
-        }
+    horoscope() {
+        var day1 = this.$root.$data.day
+        var sign1 = this.$root.$data.sign
+        this.$root.$data.current = this.$root.$data.api.filter(function(val) {
+            if (val.day.toLowerCase() == day1.toLowerCase() && val.sign.toLowerCase() == sign1.toLowerCase()){
+              console.log("Made it here")
+              return val
+            }
+        })
+        console.log(this.$root.$data.current)
       },
     },
   }

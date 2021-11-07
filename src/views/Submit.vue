@@ -3,14 +3,14 @@
   <h1>Your Horoscope</h1>
   <div :style="{ backgroundImage: 'url(images/'+this.$root.$data.sign+'.svg)'}">
   <ul id="aztro">
-    <li>Current Date: {{this.$root.$data.current.current_date}}</li>
-    <li>Compatibility: {{this.$root.$data.current.compatibility}}</li>
-    <li>Lucky Number: {{this.$root.$data.current.lucky_number}}</li>
-    <li>Lucky Time: {{this.$root.$data.current.lucky_time}}</li>
-    <li>Color: {{this.$root.$data.current.color}}</li>
-    <li>Date Range: {{this.$root.$data.current.date_range}}</li>
-    <li>Mood: {{this.$root.$data.current.mood}}</li>
-    <li>Description: {{this.$root.$data.current.description}}</li>
+    <li>Current Date: {{this.$root.$data.current[0].current_date}}</li>
+    <li>Compatibility: {{this.$root.$data.current[0].compatibility}}</li>
+    <li>Lucky Number: {{this.$root.$data.current[0].lucky_number}}</li>
+    <li>Lucky Time: {{this.$root.$data.current[0].lucky_time}}</li>
+    <li>Color: {{this.$root.$data.current[0].color}}</li>
+    <li>Date Range: {{this.$root.$data.current[0].date_range}}</li>
+    <li>Mood: {{this.$root.$data.current[0].mood}}</li>
+    <li>Description: {{this.$root.$data.current[0].description}}</li>
 </ul>
 </div>
 </div>
